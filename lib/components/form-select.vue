@@ -4,6 +4,7 @@
             :id="id || null"
             v-model="localValue"
             :disabled="disabled"
+            @change="onChange"
             ref="input"
     >
         <option v-for="option in formOptions"
@@ -24,6 +25,11 @@
             return {
                 localValue: this.value
             };
+        },
+        methods: {
+            onChange: function() {
+                this.$emit('change', localValue);
+            }
         },
         props: {
             value: {},
